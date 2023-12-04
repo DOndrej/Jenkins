@@ -1,29 +1,15 @@
 pipeline {
     agent any
-    stages {
-        stage("Clean Up"){
-            steps {
-                deleteDir()
-            }
-        }
-        stage("Clone Repo"){
-            steps {
-                sh "git clone https://github.com/jenkins-docs/simple-java-maven-app.git"
 
-            }
-        }
-        stage("Build"){
+    parameters {
+        booleanParam(defaultValue: false, description: "Enable service", name: "myBoolean")
+
+    }
+    stages {
+        stage("Demo") {
             steps {
-                dir ("simple-java-maven-app") {
-                    sh "mvn clean install"
-                }
-            }
-        }    
-        stage("Test") {
-            steps {
-                dir ("simple-java-maven-app") {
-                    sh "mvn test"
-                } 
+                echo "booleanParam is set to: ${params.myBoolean}"
+
             }
         }
     }
