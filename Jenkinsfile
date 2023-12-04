@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     parameters {
-        choice(choice: ["TEST", "DEV", "PREPROD", "PROD"], description: "Which enviroment to deploy in", name: "deployEnv")
+        choice(choices: ["TEST", "DEV", "PREPROD", "PROD"], description: "Which enviroment to deploy in", name: "deployEnv")
 
     }
     stages {
