@@ -2,13 +2,13 @@ pipeline {
     agent any
 
     parameters {
-        string(defaultValue: "TEST", description: "Which enviroment to deploy in", name: "deployEnv")
+        choice(choice: ["TEST", "DEV", "PREPROD", "PROD"], description: "Which enviroment to deploy in", name: "deployEnv")
 
     }
     stages {
         stage("Demo") {
             steps {
-                echo "string is set to: ${params.deployEnv}"
+                echo "choice is set to: ${params.deployEnv}"
 
             }
         }
