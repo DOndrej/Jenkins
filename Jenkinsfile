@@ -2,13 +2,13 @@ pipeline {
     agent any
 
     parameters {
-        booleanParam(defaultValue: false, description: "Enable service", name: "myBoolean")
+        string(defaultValue: "TEST", description: "Which enviroment to deploy in", name: "deployEnv")
 
     }
     stages {
         stage("Demo") {
             steps {
-                echo "booleanParam is set to: ${params.myBoolean}"
+                echo "string is set to: ${params.deployEnv}"
 
             }
         }
